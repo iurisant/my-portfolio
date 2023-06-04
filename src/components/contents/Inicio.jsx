@@ -25,19 +25,16 @@ export default function Inicio() {
           className="lg:mr-5 mb-5 lg:mb-0 bg-invisible rounded-full w-60"
           src={user.avatar_url}
           alt="Avatar"
-          width={600}
-          height={600}
-          quality={100}
         />
         <div className='text-white w-auto flex flex-col px-10 justify-center items-center lg:block lg:px-0 lg:w-530'>
           <p className='text-sky-800 text-base font-monospace lg:ml-1 lg:text-2xl'>
-            Hi, my name is
+            Olá, meu nome é
           </p>
           <h1 className='text-4xl font-roboto font-bold lg:text-8xl'>
             Iuri Santana
           </h1>
           <p className='text-base font-roboto lg:ml-1 lg:text-3xl text-center lg:text-left'>
-            Welcome to my portfolio website.
+            Bem-vindo ao site do meu portfólio.
           </p>
           <div className='pt-6 lg:flex'>
             <a href='https://www.linkedin.com/in/iurisant/' target='blank' className='flex justify-center items-center bg-sky-800 hover:bg-sky-950 lg:mx-2 py-2 px-16 lg:px-10 font-bold rounded-full mb-2 lg:mb-0 lg:mr-10'>

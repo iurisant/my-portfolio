@@ -9,8 +9,11 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        '530': '33.125rem',
-        '700': '43.75rem'
+        '552': '34.5rem',
+        '664': '41.5rem',
+        '71.5': '71.5%',
+        '2.28': '2.28rem',
+        '0.53': '0.53rem'
       },
       fontFamily: {
         'monospace': ['monospace'],
