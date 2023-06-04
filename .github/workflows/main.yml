@@ -1,26 +1,85 @@
-name: Deploy
+# Read more about setting it up
+# https://medium.com/@ljmocic/deploying-react-application-to-aws-s3-using-github-actions-85addacaeace
+
 on:
   push:
-    branches: [ main ]
+    tags:
+      - '*'
+
 jobs:
-  build-and-deploy:
-runs-on: ubuntu-latest
-env:
-      SSH_KEY: ${{secrets.SSH_KEY}}
-steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 16
-      uses: actions/setup-node@v2
-      with:
-        node-version: 16
-        cache: 'yarn'
-    - run: yarn install
-    - run: yarn build
-    - run: mkdir ~/.ssh
-    - run: 'echo "$SSH_KEY" >> ~/.ssh/github-action'
-    - run: chmod 400 ~/.ssh/github-action
-    - run: echo -e "Host github-actions-tutorial\n\tUser github-actions-tutorial\n\tHostname 143.198.32.125\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
-    - run: rsync -e ssh public github-actions-tutorial:~/static
-    - run: rsync -e ssh built/app.js github-actions-tutorial:~/static/js/app.js
-    - run: rsync -e ssh built/server.js github-actions-tutorial:~/api/server.js
-    - run: ssh github-actions-tutorial "pm2 reload all"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install dependencies
+        run: npm install    
+      - name: Test
+        run: npm test
+        env:
+          CI: true
+      - name: Generate build
+        run: npm run build
+      # Share artifact inside workflow
+      - name: Share artifact inside workflow
+        uses: actions/upload-artifact@v1
+        with:
+          name: react-github-actions-build
+          path: build
+  deploy:
+    runs-on: ubuntu-latest
+    # When application is successfully tested and build has been generated
+    # Then we can start with deployment
+    needs: build
+    steps:
+      # Download previously shared build
+      - name: Get artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: react-github-actions-build
+      # Set the credentials from repository settings/secrets
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+      # Copy the files from build folder to the S3 bucket
+      - name: Deploy to S3
+        run: aws s3 sync . s3://react-github-actions --acl public-read
+        working-directory: react-github-actions-build
+  release:
+    runs-on: ubuntu-latest
+    # We specify that deploys needs to
+    # finish before we create a release
+    needs: deploy
+    steps:
+      # Download previously shared build
+      - name: Get artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: react-github-actions-build
+      # Zip the build using external action
+      - name: Zip build
+        uses: thedoctor0/zip-release@master
+        with:
+          filename: react-github-actions-release-build.zip
+          path: react-github-actions-build
+      # Upload as an artifact of the current workflow
+      - name: Upload build zip artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: react-github-actions-release-build.zip
+          path: react-github-actions-release-build.zip
+      # Make official GitHub release which will trigger
+      # sending the mail with link for access
+      - name: Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: react-github-actions-release-build.zip
+          body: https://react-github-actions.s3.amazonaws.com/index.html
+          token: ${{ secrets.GITHUB_TOKEN }}
