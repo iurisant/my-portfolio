@@ -1,0 +1,26 @@
+name: Deploy
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build-and-deploy:
+runs-on: ubuntu-latest
+env:
+      SSH_KEY: ${{secrets.SSH_KEY}}
+steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 16
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16
+        cache: 'yarn'
+    - run: yarn install
+    - run: yarn build
+    - run: mkdir ~/.ssh
+    - run: 'echo "$SSH_KEY" >> ~/.ssh/github-action'
+    - run: chmod 400 ~/.ssh/github-action
+    - run: echo -e "Host github-actions-tutorial\n\tUser github-actions-tutorial\n\tHostname 143.198.32.125\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
+    - run: rsync -e ssh public github-actions-tutorial:~/static
+    - run: rsync -e ssh built/app.js github-actions-tutorial:~/static/js/app.js
+    - run: rsync -e ssh built/server.js github-actions-tutorial:~/api/server.js
+    - run: ssh github-actions-tutorial "pm2 reload all"
