@@ -24,6 +24,8 @@
   max-width: 43.75rem !important;
 }
 
+/* ============================ */
+
 @keyframes type {
   0% {
     width: 0;
@@ -98,6 +100,8 @@ body::-webkit-scrollbar-thumb {
 	}
 }
 
+/* ============================ */
+
 .border{
   width: 70%;
   max-width: 700px;
@@ -110,6 +114,8 @@ body::-webkit-scrollbar-thumb {
   background-color: black;
   background-size: auto
 }
+
+/* ============================ */
 
 .grid-posts{
   display: grid;

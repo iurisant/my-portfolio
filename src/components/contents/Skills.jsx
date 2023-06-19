@@ -1,7 +1,8 @@
 export default function Skills({ url, title }) {
   return (
-    <div className="flex justify-center py-4 items-center rounded-xl">
+    <div className="flex justify-center py-4 items-center rounded-xl fill-white">
       <img
+        className='fill-white'
         src={url || ''}
         alt={title}
         width={60}

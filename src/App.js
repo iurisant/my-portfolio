@@ -1,5 +1,5 @@
 import '../src/styles/App.css';
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import NavBar from './components/navBar/NavBar';
 import SobreMim from './components/contents/Inicio';
@@ -10,7 +10,7 @@ import AnimationBack from './components/contents/AnimationBack';
 
 export default function App() {
   return (
-    <>
+    <HelmetProvider>
       <Helmet>
         <title>My Portifolio</title>
       </Helmet>
@@ -22,6 +22,6 @@ export default function App() {
         <Projetos />
         <Contatos />
       </div>
-    </>
+    </HelmetProvider>
   )
 }
