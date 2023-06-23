@@ -14,14 +14,18 @@ export default function App() {
       <Helmet>
         <title>My Portifolio</title>
       </Helmet>
-      <div className='back-image relative overflow-hidden'>
+      <header className='back-image relative overflow-hidden'>
         <NavBar />
         <SobreMim />
         <AnimationBack />
+      </header>
+      <main className='bg-zinc-50'>
         <Habilidades />
         <Projetos />
+      </main>
+      <footer>
         <Contatos />
-      </div>
+      </footer>
     </HelmetProvider>
   )
 }

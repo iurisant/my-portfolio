@@ -31,7 +31,7 @@ export default function Habilidades() {
   return (
     <section
       id="Habilidades"
-      className='relative z-10 p-2/3 flex flex-col justify-center items-center bg-white text-black overflow-hidden'
+      className='relative z-10 p-2/3 flex flex-col justify-center items-center text-black overflow-hidden'
     >
       <h2 className='mt-20 font-extrabold text-5xl'>Habilidades</h2>
       <span className='my-12 border' />
