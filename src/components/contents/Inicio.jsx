@@ -22,7 +22,7 @@ export default function Inicio() {
     <section className='flex justify-center relative z-10 '>
       <div className='flex flex-col pb-8 pt-0 justify-center items-center lg:flex lg:flex-row lg:py-44'>
         <img
-          className="lg:mr-5 mb-5 lg:mb-0 bg-invisible rounded-full w-60"
+          className="lg:mr-10 mb-5 lg:mb-0 bg-invisible rounded-full w-60"
           src={user.avatar_url}
           alt="Avatar"
         />

@@ -7,9 +7,9 @@ import Contacts from '../../img/contact.svg';
 export default function navBar() {
   return (
     <header id="Inicio" className="p-0 relative z-10 ">
-      <nav className="mx-auto flex max-w-7xl items-center justify-center p-6 lg:px-8" aria-label="Global">
-        <div className="hidden lg:flex gap-x-24 text-base max-h-6">
-          <a href="#Inicio" className="font-semibold leading-6 text-white flex items-center justify-center group hover:text-lg">
+      <nav className="flex items-center justify-center p-6 ">
+        <div className="flex gap-x-36 text-base max-h-4 max-w-[792px]">
+          <a href="#Inicio" className="font-semibold leading-6 text-white flex items-center justify-center group hover:text-lg max-w-[60px]">
             <img
               className="mr-2 group-hover:w-5"
               src={Home}
@@ -18,7 +18,7 @@ export default function navBar() {
             />
             Início
           </a>
-          <a href="#Habilidades" className="font-semibold leading-6 text-white flex items-center justify-center group hover:text-lg">
+          <a href="#Habilidades" className="font-semibold leading-6 text-white flex items-center justify-center group hover:text-lg max-w-[110px]">
             <img
               className="mr-2 group-hover:w-5"
               src={Puzzle}
@@ -27,7 +27,7 @@ export default function navBar() {
             />
             Habilidades
           </a>
-          <a href="#Projetos" className="font-semibold leading-6 text-white flex items-center justify-center group hover:text-lg">
+          <a href="#Projetos" className="font-semibold leading-6 text-white flex items-center justify-center group hover:text-lg max-w-[84px]">
             <img
               className="mr-2 group-hover:w-5"
               src={Rocket}
@@ -36,7 +36,7 @@ export default function navBar() {
             />
             Projetos
           </a>
-          <a href="#Contatos" className="font-semibold leading-6 text-white flex items-center justify-center group hover:text-lg">
+          <a href="#Contatos" className="font-semibold leading-6 text-white flex items-center justify-center group hover:text-lg max-w-[90px]">
             <img
               className="mr-2 group-hover:w-5"
               src={Contacts}

@@ -1,23 +1,52 @@
+import { Formik, Form, Field } from 'formik';
+
 export default function Contatos() {
   return (
-    <section id="Contatos" className='relative z-10 bg-black text-white flex flex-col items-center justify-center overflow-hidden w-full'>
-      <div className='mx-20 w-full flex flex-col items-center justify-center'>
-        <h2 className='my-20 font-extrabold text-5xl'>Contato</h2>
-        <div className='flex flex-col gap-4 mb-20 w-9/12'>
-          <input type="text" id="name" placeholder="Nome"
-            className='bg-transparent border-[0.5px] border-white/50 rounded p-4'
-          />
-          <input type="mail" id="mail" placeholder="Email"
-            className='bg-transparent border-[0.5px] border-white/50 rounded p-4'
-          />
-          <textarea name="comment" id="msg" placeholder="Menssagem"
-            className='bg-transparent border-[0.5px] border-white/50 rounded p-4'>
-          </textarea>
-          <input type="submit" id="submit"
-            className='bg-transparent border-[0.5px] border-white/50 rounded p-4 hover:bg-white/10 cursor-pointer'
-          />
+    <>
+      <section id="Contatos" className='back-image relative z-10 bg-black text-white flex flex-col items-center justify-center overflow-hidden'>
+        <div className='w-full flex flex-col items-center justify-center'>
+          <h2 className='my-20 font-extrabold text-5xl'>Contato</h2>
+          <Formik
+            initialValues={{ name: '', email: '', description: '' }}
+            onSubmit={() => { }}
+          //validationSchema={() => { }}
+          >
+            <Form className='w-9/12 flex flex-col items-center justify-center gap-4 mb-20'>
+              <Field
+                className='bg-transparent border-[0.5px] border-white/50 rounded p-4 w-full'
+                type='name'
+                name='name'
+                id='name'
+                placeholder='Nome'
+                maxLength="64"
+              />
+              <Field
+                className='bg-transparent border-[0.5px] border-white/50 rounded p-4 w-full'
+                type='email'
+                name='email'
+                id='email'
+                placeholder='Email'
+                maxLength="64"
+              />
+              <Field
+                className='bg-transparent border-[0.5px] border-white/50 rounded p-4 w-full max-h-[154px]'
+                as="textarea"
+                id="description"
+                name="description"
+                placeholder='Mensagem'
+                maxLength="512"
+              />
+              <button
+                className='bg-transparent border-[0.5px] border-white/50 rounded p-4 w-full'
+                type='submit'
+              >
+                Enviar
+              </button>
+            </Form>
+          </Formik>
         </div>
-      </div>
-    </section>
+      </section>
+
+    </>
   )
 }
