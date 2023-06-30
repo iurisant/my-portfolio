@@ -11,7 +11,7 @@ export default function Contatos() {
             onSubmit={() => { }}
           //validationSchema={() => { }}
           >
-            <Form className='w-9/12 flex flex-col items-center justify-center gap-4 mb-20'>
+            <Form className='w-9/12 max-w-[1500px] flex flex-col items-center justify-center gap-4 mb-20'>
               <Field
                 className='bg-transparent border-[0.5px] border-white/50 rounded p-4 w-full'
                 type='name'

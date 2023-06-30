@@ -6,9 +6,9 @@ import Contacts from '../../img/contact.svg';
 
 export default function navBar() {
   return (
-    <header id="Inicio" className="p-0 relative z-10 ">
+    <div id="Inicio" className="p-0 relative z-10 ">
       <nav className="flex items-center justify-center p-6 ">
-        <div className="flex gap-x-36 text-base max-h-4 max-w-[792px]">
+        <div className="lg:flex gap-x-36 text-base max-h-4 max-w-[792px] hidden">
           <a href="#Inicio" className="font-semibold leading-6 text-white flex items-center justify-center group hover:text-lg max-w-[60px]">
             <img
               className="mr-2 group-hover:w-5"
@@ -47,6 +47,6 @@ export default function navBar() {
           </a>
         </div>
       </nav>
-    </header>
+    </div>
   )
 }
