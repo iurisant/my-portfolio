@@ -8,10 +8,13 @@ import Projetos from './components/contents/Projetos';
 import Contatos from './components/contents/Contatos';
 import AnimationBack from './components/contents/AnimationBack';
 import OnlyUp from './components/modal/OnlyUp';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
   return (
     <HelmetProvider>
+      <ToastContainer theme="dark" />
       <Helmet>
         <title>My Portifolio</title>
       </Helmet>
