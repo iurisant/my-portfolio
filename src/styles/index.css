@@ -3,28 +3,28 @@
 @tailwind utilities;
 
 @media (min-width: 1024px) {
-  h1 { 
+  h1 {
     box-shadow: .3em 0 0 rgb(7 89 133);
-    width: 530px;
+    width: 560px;
     overflow: hidden;
     color: #FFF;
     white-space: nowrap;
     animation: caret .5s step-end infinite alternate,
-    type 2s steps(1, end)
+      type 2s steps(1, end)
   }
 }
 
-html{
+html {
   scroll-behavior: smooth !important;
 }
 
-.back-image{
+.back-image {
   background-image: url("../img/background.jpg");
   background-color: black;
   background-size: 100% 665px;
 }
 
-.max-img{
+.max-img {
   max-width: 43.75rem !important;
 }
 
@@ -34,46 +34,59 @@ html{
   0% {
     width: 0;
   }
-  8% { 
+
+  8% {
     width: 30px;
   }
+
   16% {
     width: 84px;
   }
+
   24% {
     width: 120px;
   }
+
   32% {
     width: 140px;
   }
+
   40% {
     width: 164px;
   }
+
   48% {
     width: 225px;
   }
+
   56% {
     width: 277px;
   }
+
   64% {
     width: 329px;
   }
+
   72% {
     width: 365px;
   }
+
   80% {
     width: 418px;
   }
+
   88% {
     width: 470px;
   }
+
   100% {
     width: 530px;
   }
 }
-@keyframes caret { 
-  50% { 
-    box-shadow: .6em 0 0 transparent ;
+
+@keyframes caret {
+  50% {
+    box-shadow: .6em 0 0 transparent;
   }
 }
 
@@ -91,29 +104,30 @@ body::-webkit-scrollbar-thumb {
   border: 3px solid black;
 }
 
-.animate-rotate { 
+.animate-rotate {
   animation: rotate 10s linear infinite;
 }
 
 @keyframes rotate {
-	0% {
-		transform: rotate(0);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* ============================ */
 
-.border{
+.border {
   width: 70%;
   max-width: 700px;
   border: 0.5px solid;
   border-image: linear-gradient(to right, transparent, rgb(7 89 133), transparent) 1
 }
 
-.bg-skills{
+.bg-skills {
   background-image: url("../img/background.jpg");
   background-color: black;
   background-size: auto
@@ -121,7 +135,7 @@ body::-webkit-scrollbar-thumb {
 
 /* ============================ */
 
-.grid-posts{
+.grid-posts {
   display: grid;
   grid-template-columns: repeat(3, minmax(286px, 0fr));
   gap: 16px;
@@ -130,28 +144,31 @@ body::-webkit-scrollbar-thumb {
   justify-content: center;
 }
 
-@media (max-width: 1320px){
-  .grid-posts{
+@media (max-width: 1320px) {
+  .grid-posts {
     grid-template-columns: repeat(3, minmax(286px, 0fr));
-  } 
+  }
 
 }
-@media (max-width: 1080px){
-  .grid-posts{
+
+@media (max-width: 1080px) {
+  .grid-posts {
     grid-template-columns: repeat(2, minmax(286px, 0fr));
-  } 
+  }
 
 }
-@media (max-width: 840px){
-  .grid-posts{
+
+@media (max-width: 840px) {
+  .grid-posts {
     grid-template-columns: repeat(2, minmax(286px, 0fr));
-  } 
+  }
 
 }
-@media (max-width: 610px){
-  .grid-posts{
+
+@media (max-width: 610px) {
+  .grid-posts {
     grid-template-columns: repeat(1, minmax(286px, 0fr));
-  } 
+  }
 
 }
 
@@ -179,7 +196,7 @@ body {
   min-width: 250px;
 }
 
-.box{
-  box-shadow: 0 5px 5px 0 rgba(233, 240, 243, 0.5), 
-  0 0 0 1px #E6ECF8;
+.box {
+  box-shadow: 0 5px 5px 0 rgba(233, 240, 243, 0.5),
+    0 0 0 1px #E6ECF8;
 }
