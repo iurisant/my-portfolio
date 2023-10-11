@@ -26,7 +26,7 @@ export default function Inicio() {
           src={user.avatar_url}
           alt="Avatar"
         />
-        <div className='text-white w-auto flex flex-col px-10 justify-center items-center lg:block lg:px-0 lg:w-530'>
+        <div className='text-white w-auto flex flex-col px-10 justify-center items-center lg:block lg:px-0 lg:w-[560px]'>
           <p className='text-sky-800 text-base font-monospace lg:ml-1 lg:text-2xl'>
             Olá, meu nome é
           </p>
